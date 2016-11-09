@@ -20,6 +20,7 @@ import rest.addressbook.domain.AddressBook;
 import rest.addressbook.domain.Person;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotEquals;
 
 /**
  * A simple test suite
@@ -47,6 +48,14 @@ public class AddressBookServiceTest {
 		// Verify that GET /contacts is well implemented by the service, i.e
 		// test that it is safe and idempotent
 		//////////////////////////////////////////////////////////////////////	
+		
+		response = client.target("http://localhost:8282/contacts").request()
+				.get();
+		// Idempotent?
+		assertEquals(200, response.getStatus());
+		// Safe?
+		assertEquals(0, response.readEntity(AddressBook.class).getPersonList()
+				.size());
 	}
 
 	@Test
@@ -88,7 +97,18 @@ public class AddressBookServiceTest {
 		// Verify that POST /contacts is well implemented by the service, i.e
 		// test that it is not safe and not idempotent
 		//////////////////////////////////////////////////////////////////////	
-				
+		
+		Response newResponse = client.target("http://localhost:8282/contacts")
+				.request(MediaType.APPLICATION_JSON)
+				.post(Entity.entity(juan, MediaType.APPLICATION_JSON));
+		// Idempotent?
+		assertNotEquals(juanURI, newResponse.getLocation());
+		
+		newResponse = client.target("http://localhost:8282/contacts").request()
+				.get();
+		// AddressBook has 2 contacts? (not safe)
+		assertEquals(2, newResponse.readEntity(AddressBook.class).getPersonList()
+				.size());
 	}
 
 	@Test
@@ -143,6 +163,15 @@ public class AddressBookServiceTest {
 		// Verify that GET /contacts/person/3 is well implemented by the service, i.e
 		// test that it is safe and idempotent
 		//////////////////////////////////////////////////////////////////////	
+		
+		response = client.target("http://localhost:8282/contacts/person/3")
+				.request(MediaType.APPLICATION_JSON).get();
+		assertEquals(200, response.getStatus());
+		
+		Person newMariaUpdated = response.readEntity(Person.class);
+		assertEquals(maria.getName(), newMariaUpdated.getName());
+		assertEquals(3, newMariaUpdated.getId());
+		assertEquals(mariaURI, newMariaUpdated.getHref());
 	
 	}
 
@@ -175,6 +204,17 @@ public class AddressBookServiceTest {
 		// Verify that GET for collections is well implemented by the service, i.e
 		// test that it is safe and idempotent
 		//////////////////////////////////////////////////////////////////////	
+		
+		// Idempotent?
+		Response newResponse = client.target("http://localhost:8282/contacts")
+				.request(MediaType.APPLICATION_JSON).get();
+		assertEquals(newResponse.getStatus(), response.getStatus());
+		
+		// Safe?
+		addressBookRetrieved = newResponse.readEntity(AddressBook.class);
+		assertEquals(2, addressBookRetrieved.getPersonList().size());
+		assertEquals(juan.getName(), addressBookRetrieved.getPersonList()
+				.get(1).getName());
 	
 	}
 
@@ -228,6 +268,18 @@ public class AddressBookServiceTest {
 		// Verify that PUT /contacts/person/2 is well implemented by the service, i.e
 		// test that it is idempotent
 		//////////////////////////////////////////////////////////////////////	
+		
+		response = client
+				.target("http://localhost:8282/contacts/person/2")
+				.request(MediaType.APPLICATION_JSON)
+				.put(Entity.entity(maria, MediaType.APPLICATION_JSON));
+		assertEquals(200, response.getStatus());
+		assertEquals(MediaType.APPLICATION_JSON_TYPE, response.getMediaType());
+		
+		Person newMariaRetrieved = response.readEntity(Person.class);
+		assertEquals(mariaRetrieved.getName(), newMariaRetrieved.getName());
+		assertEquals(mariaRetrieved.getId(), newMariaRetrieved.getId());
+		assertEquals(mariaRetrieved.getHref(), newMariaRetrieved.getHref());
 	
 	}
 
@@ -261,6 +313,10 @@ public class AddressBookServiceTest {
 		// Verify that DELETE /contacts/person/2 is well implemented by the service, i.e
 		// test that it is idempotent
 		//////////////////////////////////////////////////////////////////////	
+		
+		response = client.target("http://localhost:8282/contacts/person/2")
+				.request().delete();
+		assertEquals(404, response.getStatus());
 
 	}
 

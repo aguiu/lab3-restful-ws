@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="rest.addressbook.AddressBookServiceTest" tests="7" skipped="0" failures="0" errors="0" timestamp="2016-11-09T19:02:39" hostname="ALEJANDRO-PC" time="1.441">
+  <properties/>
+  <testcase name="listUsers" classname="rest.addressbook.AddressBookServiceTest" time="0.974"/>
+  <testcase name="deleteUsers" classname="rest.addressbook.AddressBookServiceTest" time="0.08"/>
+  <testcase name="updateUsers" classname="rest.addressbook.AddressBookServiceTest" time="0.1"/>
+  <testcase name="createUsers" classname="rest.addressbook.AddressBookServiceTest" time="0.08"/>
+  <testcase name="serviceIsAlive" classname="rest.addressbook.AddressBookServiceTest" time="0.068"/>
+  <testcase name="findUsers" classname="rest.addressbook.AddressBookServiceTest" time="0.067"/>
+  <testcase name="createUser" classname="rest.addressbook.AddressBookServiceTest" time="0.071"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[nov 09, 2016 8:02:39 PM org.glassfish.grizzly.http.server.NetworkListener start
+INFORMACIÓN: Started listener bound to [localhost:8282]
+nov 09, 2016 8:02:39 PM org.glassfish.grizzly.http.server.HttpServer start
+INFORMACIÓN: [HttpServer] Started.
+nov 09, 2016 8:02:40 PM org.glassfish.grizzly.http.server.NetworkListener shutdownNow
+INFORMACIÓN: Stopped listener bound to [localhost:8282]
+nov 09, 2016 8:02:40 PM org.glassfish.grizzly.http.server.NetworkListener start
+INFORMACIÓN: Started listener bound to [localhost:8282]
+nov 09, 2016 8:02:40 PM org.glassfish.grizzly.http.server.HttpServer start
+INFORMACIÓN: [HttpServer-1] Started.
+nov 09, 2016 8:02:40 PM org.glassfish.grizzly.http.server.NetworkListener shutdownNow
+INFORMACIÓN: Stopped listener bound to [localhost:8282]
+nov 09, 2016 8:02:40 PM org.glassfish.grizzly.http.server.NetworkListener start
+INFORMACIÓN: Started listener bound to [localhost:8282]
+nov 09, 2016 8:02:40 PM org.glassfish.grizzly.http.server.HttpServer start
+INFORMACIÓN: [HttpServer-2] Started.
+nov 09, 2016 8:02:40 PM org.glassfish.grizzly.http.server.NetworkListener shutdownNow
+INFORMACIÓN: Stopped listener bound to [localhost:8282]
+nov 09, 2016 8:02:40 PM org.glassfish.grizzly.http.server.NetworkListener start
+INFORMACIÓN: Started listener bound to [localhost:8282]
+nov 09, 2016 8:02:40 PM org.glassfish.grizzly.http.server.HttpServer start
+INFORMACIÓN: [HttpServer-3] Started.
+nov 09, 2016 8:02:40 PM org.glassfish.grizzly.http.server.NetworkListener shutdownNow
+INFORMACIÓN: Stopped listener bound to [localhost:8282]
+nov 09, 2016 8:02:40 PM org.glassfish.grizzly.http.server.NetworkListener start
+INFORMACIÓN: Started listener bound to [localhost:8282]
+nov 09, 2016 8:02:40 PM org.glassfish.grizzly.http.server.HttpServer start
+INFORMACIÓN: [HttpServer-4] Started.
+nov 09, 2016 8:02:40 PM org.glassfish.grizzly.http.server.NetworkListener shutdownNow
+INFORMACIÓN: Stopped listener bound to [localhost:8282]
+nov 09, 2016 8:02:40 PM org.glassfish.grizzly.http.server.NetworkListener start
+INFORMACIÓN: Started listener bound to [localhost:8282]
+nov 09, 2016 8:02:40 PM org.glassfish.grizzly.http.server.HttpServer start
+INFORMACIÓN: [HttpServer-5] Started.
+nov 09, 2016 8:02:40 PM org.glassfish.grizzly.http.server.NetworkListener shutdownNow
+INFORMACIÓN: Stopped listener bound to [localhost:8282]
+nov 09, 2016 8:02:40 PM org.glassfish.grizzly.http.server.NetworkListener start
+INFORMACIÓN: Started listener bound to [localhost:8282]
+nov 09, 2016 8:02:40 PM org.glassfish.grizzly.http.server.HttpServer start
+INFORMACIÓN: [HttpServer-6] Started.
+nov 09, 2016 8:02:40 PM org.glassfish.grizzly.http.server.NetworkListener shutdownNow
+INFORMACIÓN: Stopped listener bound to [localhost:8282]
+]]></system-err>
+</testsuite>
